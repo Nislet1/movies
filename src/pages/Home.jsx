@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import MovieCarousel from "../components/MovieCarousel";
+import { Play } from 'lucide-react'
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -76,7 +77,8 @@ function Home() {
           <div className="text-white">1h 30min / rating / release date / production company</div>
           <p className="text-white text-md">{selectedMovie.overview}</p>
           <div className="btns">
-            <button className="rounded-md bg-yellow-400 px-10 py-4 font-semibold">
+          <button className='h-10 px-4 py-2 inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium border border-input bg-primary text-primary-foreground shadow hover:bg-primary/90'>
+              <Play className='size-4'/>
               Watch Trailer
             </button>
           </div>
@@ -87,7 +89,7 @@ function Home() {
             <img
               className={`w-48 hover:w-52 rounded-md posters cursor-pointer ${
                 selectedMovie.id == movie.id &&
-                "w-52 shadow-lg border-2 border-yellow-400"
+                "w-52 shadow-lg"
               }`}
               key={movie.id}
               src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
@@ -97,7 +99,7 @@ function Home() {
           ))}
         </div>
       </div>
-      <div className="bg-neutral-950 p-20 overflow-hidden space-y-4">
+      <div className="p-20 overflow-hidden space-y-4">
         <MovieCarousel title='Popular' movies={popular} />
         <MovieCarousel title='Trending' movies={trending} />
         <MovieCarousel title='Top Rated' movies={topRated} />

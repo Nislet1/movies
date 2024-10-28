@@ -33,12 +33,6 @@ function Details() {
       .then((data) => setImages(data))
       .catch((error) => console.error(error));
 
-    fetch(
-      "https://api.themoviedb.org/3/search/movie?query=spider&include_adult=false&api_key=72a814220967e9899c058deb9f37ed4a&language=en-US&page=1"
-    )
-      .then((res) => res.json())
-      .then((data) => console.log(data))
-      .catch((err) => console.error(err));
   }, []);
 
 

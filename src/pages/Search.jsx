@@ -21,7 +21,7 @@ function Search() {
       .then((res) => res.json())
       .then((data) => setMovies(data))
       .catch((err) => console.error(err));
-  }, [count]);
+  }, [count, search]);
 
   console.log(movies);
 

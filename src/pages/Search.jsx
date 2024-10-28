@@ -23,7 +23,6 @@ function Search() {
       .catch((err) => console.error(err));
   }, [count, search]);
 
-  console.log(movies);
 
   return (
     <div className="">

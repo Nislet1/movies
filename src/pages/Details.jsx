@@ -41,7 +41,6 @@ function Details() {
       .catch((err) => console.error(err));
   }, []);
 
-    console.log(credits);
 
   return (
     <div className="">

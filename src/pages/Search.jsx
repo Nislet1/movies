@@ -23,6 +23,10 @@ function Search() {
       .catch((err) => console.error(err));
   }, [count, search]);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bf77167bc85a5c43dae59539ea876de6ca79be0f
   return (
     <div className="">
       <div>

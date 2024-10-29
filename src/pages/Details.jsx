@@ -40,40 +40,14 @@ function Details() {
         .then((data) => setImages(data))
         .catch((error) => console.error(error));
 
-      fetch(
-        `https://api.themoviedb.org/3/movie/${id}/videos?api_key=72a814220967e9899c058deb9f37ed4a`
-      )
-        .then((response) => response.json())
-        .then((data) => setVideos(data))
-        .catch((error) => console.error(error));
-    } else if(type === 'tv'){
-      fetch(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=72a814220967e9899c058deb9f37ed4a`
-      )
-        .then((response) => response.json())
-        .then((data) => setMovie(data))
-        .catch((error) => console.error(error));
-  
-      fetch(
-        `https://api.themoviedb.org/3/tv/${id}/credits?api_key=72a814220967e9899c058deb9f37ed4a`
-      )
-        .then((response) => response.json())
-        .then((data) => setCredits(data))
-        .catch((error) => console.error(error));
-  
-      fetch(
-        `https://api.themoviedb.org/3/tv/${id}/images?api_key=72a814220967e9899c058deb9f37ed4a`
-      )
-        .then((response) => response.json())
-        .then((data) => setImages(data))
-        .catch((error) => console.error(error));
-    }
-      
-
+    fetch(
+      "https://api.themoviedb.org/3/search/movie?query=spider&include_adult=false&api_key=72a814220967e9899c058deb9f37ed4a&language=en-US&page=1"
+    )
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  }
   }, []);
-
-  console.log(videos)
-
 
 
   return (

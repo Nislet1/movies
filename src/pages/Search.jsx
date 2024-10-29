@@ -9,7 +9,7 @@ function Search() {
   const [movies, setMovies] = useState([]);
   const [count, setCount] = useState(1);
 
-  const navitage = useNavigate();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(
@@ -22,8 +22,6 @@ function Search() {
       .then((data) => setMovies(data))
       .catch((err) => console.error(err));
   }, [count, search]);
-
-  console.log(movies);
 
   return (
     <div className="">
@@ -66,7 +64,13 @@ function Search() {
         <div className="grid grid-cols-2 gap-y-3 gap-x-3 md:grid-cols-3 lg:grid-cols-5">
           {movies.results?.map((movie) => (
             <div
-              onClick={() => navitage(`/details/${movie.id}`)}
+              onClick={() => {
+                if (movie.media_type === "tv") {
+                  navigate(`/details/tv/${movie.id}`);
+                } else if (movie.media_type === "movie") {
+                  navigate(`/details/movie/${movie.id}`);
+                }
+              }} 
               key={movie.id}
               className="h-[300px] lg:h-[400px] bg-cover bg-center rounded-md border border-muted p-2 md:p-5 flex flex-col justify-end items-start"
               style={{

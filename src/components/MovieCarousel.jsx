@@ -5,7 +5,7 @@ import IconBtn from './Button';
 
 const MovieCarousel = ({ movies, title }) => {
   const carouselRef = useRef(null);
-  const navitage = useNavigate();
+  const navigate = useNavigate();
 
   const scrollLeft = () => {
     if (carouselRef.current) {
@@ -44,8 +44,14 @@ const MovieCarousel = ({ movies, title }) => {
             key={index}
             src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
             alt={movie.title}
-            className="w-48 rounded-md posters hover:scale-110"
-            onClick={() => navitage(`/details/${movie.id}`)}
+            className="w-52 rounded-xl border border-muted"
+            onClick={() => {
+              if (movie.media_type === "tv") {
+                navigate(`/details/tv/${movie.id}`);
+              }else {
+                navigate(`/details/movie/${movie.id}`);
+              }
+            }}
           />
         ))}
       </div>

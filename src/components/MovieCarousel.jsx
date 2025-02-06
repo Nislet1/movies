@@ -1,7 +1,8 @@
 import { MoveLeft, MoveRight } from 'lucide-react';
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import IconBtn from './Button';
+import { Button } from './ui/button';
+
 
 const MovieCarousel = ({ movies, title }) => {
   const carouselRef = useRef(null);
@@ -20,23 +21,24 @@ const MovieCarousel = ({ movies, title }) => {
   };
 
   return (
-    <div className="relative w-full">
-      <div className="flex items-center justify-between text-white">
-        <h1 className="text-3xl font-semibold">{title}</h1>
+    <div className="relative w-full space-y-3">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl">{title}</h1>
         <div className="flex items-center gap-3">
-          <button onClick={scrollLeft} className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-muted hover:bg-accent hover:text-accent-foreground h-10 w-10">
-          <MoveLeft className='size-3' />
-          </button>
-          <button onClick={scrollRight} className="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors border border-muted hover:bg-accent hover:text-accent-foreground h-10 w-10">
+          <Button variant="outline" size="icon" onClick={scrollLeft}>
+            <MoveLeft className='size-3' />
+          </Button>
+          <Button variant="outline" size="icon" onClick={scrollRight}>
             <MoveRight className='size-3' />
-          </button>
+          </Button>
+
         </div>
       </div>
 
       {/* Carousel Container */}
       <div
         ref={carouselRef}
-        className="flex items-end space-x-4 overflow-x-auto scrollbar-hide scroll-smooth"
+        className="flex items-end space-x-3.5 overflow-x-auto scrollbar-hide scroll-smooth"
         style={{ scrollBehavior: 'smooth', padding: '1rem 0' }}
       >
         {movies.map((movie, index) => (
@@ -44,7 +46,7 @@ const MovieCarousel = ({ movies, title }) => {
             key={index}
             src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
             alt={movie.title}
-            className="w-52 rounded-xl border border-muted"
+            className="w-52 rounded-xl border border-muted cursor-pointer"
             onClick={() => {
               if (movie.media_type === "tv") {
                 navigate(`/details/tv/${movie.id}`);

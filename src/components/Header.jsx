@@ -1,10 +1,14 @@
-import { House, Clapperboard, Tv, Menu } from "lucide-react";
+import { House, Clapperboard, Tv, Menu, Search, Star, LogIn , User} from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { Film } from "lucide-react";
-import IconBtn from "./Button";
 import { useState } from "react";
+import { Input } from "./ui/input";
+import { Button } from "./ui/button";
+import { motion } from "framer-motion";
+
 
 function Header() {
+
+  const user = false
 
   const links = [
     { title: 'Home', icon: House, href: '/' },
@@ -21,21 +25,37 @@ function Header() {
     }
   };
   return (
-    <header className="sticky top-0 continer border-b border-accent bg-background text-white mb-4" style={{zIndex:'9999'}}>
-      <nav className="container mx-auto flex h-14 items-center space-x-4 px-2 justify-between md:space-x-0">
-        <div className="flex items-center space-x-4">
-          <Link to={'/'}><Film className="size-7"/></Link>
-          <div className=" hidden md:block">
-          {links.map((link) => <Link to={link.href} key={link.title} className='inline-flex gap-2 h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground'><link.icon className="size-4" />{link.title}</Link>)}   
-          </div>
+    <motion.header initial={{ y: -100 }} animate={{ y: 0 }} className="sticky top-0 z-50 bg-black/80 backdrop-blur-sm">
+      <nav className="container mx-auto flex h-14 items-center px-2 gap-2 justify-between">
+        <div className="hidden md:block">
+        {links.map((link) => <Link to={link.href} key={link.title} className='inline-flex gap-2 h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors'><link.icon className="size-4" />{link.title}</Link>)}   
         </div>
-        <input onKeyDown={handleKeyDown} onChange={e=>setSearch(e.target.value)} type="text" placeholder="Search..." className="flex h-9 w-full md:w-[300px] rounded-md border border-muted placeholder:text-neutral-300 bg-transparent px-3 py-1 text-sm shadow-sm transition-colors" />
-        <div className='md:hidden'>
-          <IconBtn><Menu /></IconBtn>
+
+        <div className="flex items-center gap-2 w-full md:w-max">
+        <div className="relative w-full md:w-[340px]">
+          <Input
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search..."
+            className="pr-10 w-full"
+          />
+          <Search
+            className="absolute top-1/2 right-3 transform -translate-y-1/2 w-5 h-5 text-muted-foreground"
+          />
         </div>
+        {user ? <div className="flex items-center gap-2"> <Button variant='outline' >Profile</Button> <Button variant='outline' size='icon'><Star /></Button> </div> :<Link to={'/login'}> <Button variant='outline' className='h-9 w-9 md:w-max'><LogIn /> <span className="hidden lg:block">Sign In</span></Button></Link>}
+        
+        </div>
+
+        
+
+
+        <Button className='md:hidden w-10' variant="outline" size="icon"><Menu /></Button>
+
+
         
       </nav>
-    </header>
+    </motion.header>
 
   );
 }

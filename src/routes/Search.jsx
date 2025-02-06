@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Bg from "../components/Bg";
 import { MoveLeft, MoveRight } from "lucide-react";
+import { API_KEY, BASE_URL } from "@/lib/fetch";
 
 function Search() {
   const { search } = useParams();
@@ -13,10 +14,7 @@ function Search() {
 
   useEffect(() => {
     fetch(
-      "https://api.themoviedb.org/3/search/multi?query=" +
-        search +
-        "&include_adult=false&api_key=72a814220967e9899c058deb9f37ed4a&language=en-US&page=" +
-        count
+      `${BASE_URL}/search/multi?query=${search}&include_adult=false&api_key=${API_KEY}&language=en-US&page=${count}`
     )
       .then((res) => res.json())
       .then((data) => setMovies(data))
@@ -24,12 +22,10 @@ function Search() {
   }, [count, search]);
 
   return (
-    <div className="">
-      <div>
+    <div>
         <Bg />
-      </div>
       <Header />
-      <main className="container mx-auto space-y-6 px-2">
+      <main className="container mx-auto space-y-6 px-2 mt-3">
         <div>
           <h1 className="mb-2 text-2xl font-medium text-white">
             Search results for
@@ -72,7 +68,7 @@ function Search() {
                 }
               }} 
               key={movie.id}
-              className="h-[300px] lg:h-[400px] bg-cover bg-center rounded-md border border-muted p-2 md:p-5 flex flex-col justify-end items-start"
+              className="h-[300px] lg:h-[400px] bg-cover bg-center rounded-md border border-muted p-2 md:p-5 flex flex-col justify-end items-start cursor-pointer"
               style={{
                 backgroundImage: `radial-gradient(circle, rgba(0, 0, 0, 0) -100%, rgba(0, 0, 0, 0.95) 100%), url(${
                   movie.poster_path

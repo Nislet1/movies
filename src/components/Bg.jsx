@@ -1,6 +1,6 @@
 function Bg() {
   return (
-    <div className="absolute top-0 h-dvh w-full text-muted bg-neutral-900" style={{zIndex: '-99'}}>  
+    <div className="absolute top-0 h-dvh w-full text-muted bg-background" style={{zIndex: '-99'}}>  
     <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <pattern

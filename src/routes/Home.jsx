@@ -32,7 +32,7 @@ function Home() {
     <div>
       <Header />
       <HeroSection/>
-      <div className="container mx-auto overflow-hidden space-y-4 py-20">
+      <div className="container mx-auto overflow-hidden space-y-4 py-6 md:py-10">
         <MovieCarousel title='Popular' movies={popular} />
         <MovieCarousel title='Trending' movies={trending} />
         <MovieCarousel title='Top Rated' movies={topRated} />

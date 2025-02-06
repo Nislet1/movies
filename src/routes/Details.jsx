@@ -97,13 +97,11 @@ function Details() {
               <p className="text-muted-foreground">{movie.overview}</p>
               <div className="flex items-center gap-2">
                   <Button disabled={!trailer?.results?.[0]?.key} size='lg'>
-                    <Link to={`https://www.youtube.com/watch?v=`+trailer?.results?.[0]?.key} className="flex items-center gap-2">
+                    <Link to={`https://www.youtube.com/watch?v=`+trailer?.results?.[0]?.key} target="_blank" className="flex items-center gap-2">
                       <Play className="size-4" />
                       Watch Trailer
                     </Link>
                   </Button>
-
-                <Button size='icon'><Star /></Button>
               </div>
 
 

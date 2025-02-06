@@ -40,7 +40,13 @@ const MovieCarousel = ({ movies, title }) => {
   };
 
   return (
-    <div className="relative w-full pb-4 md:pb-8">
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="relative w-full pb-4 md:pb-8"
+    >
       <div className="flex items-center justify-between mb-2 md:mb-4 px-4 md:px-0">
         <h2 className="text-xl md:text-2xl font-semibold text-white">
           {title}
@@ -100,7 +106,7 @@ const MovieCarousel = ({ movies, title }) => {
           ))}
         </motion.div>
       </div>
-    </div>
+    </motion.section>
   );
 };
 

@@ -8,8 +8,6 @@ import { motion } from "framer-motion";
 
 function Header() {
 
-  const user = false
-
   const links = [
     { title: 'Home', icon: House, href: '/' },
     { title: 'Movies', icon: Clapperboard, href: '/movies' },
@@ -43,14 +41,13 @@ function Header() {
             className="absolute top-1/2 right-3 transform -translate-y-1/2 w-5 h-5 text-muted-foreground"
           />
         </div>
-        {user ? <div className="flex items-center gap-2"> <Button variant='outline' >Profile</Button> <Button variant='outline' size='icon'><Star /></Button> </div> :<Link to={'/login'}> <Button variant='outline' className='h-9 w-9 md:w-max'><LogIn /> <span className="hidden lg:block">Sign In</span></Button></Link>}
-        
+        <Button className='md:hidden w-10' variant="outline" size="icon"><Menu /></Button>
         </div>
 
         
 
 
-        <Button className='md:hidden w-10' variant="outline" size="icon"><Menu /></Button>
+        
 
 
         
